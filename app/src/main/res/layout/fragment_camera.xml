@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_error"
     tools:context=".CameraFragment">
 
    <RelativeLayout
@@ -17,6 +16,6 @@
             android:layout_centerInParent="true"
             android:text=""
             android:textSize="28sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
     </RelativeLayout>
 </FrameLayout>

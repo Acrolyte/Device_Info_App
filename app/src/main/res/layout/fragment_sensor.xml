@@ -15,50 +15,57 @@
             android:id="@+id/tv_gps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SENSOR_NOT_AVAILABLE"
-            android:textSize="24sp" />
+            android:text="MAGNETIC_FIELD_SENSOR_NOT_AVAILABLE"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_gyro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SENSOR_NOT_AVAILABLE"
-            android:textSize="24sp" />
+            android:text="GYROSCOPE_SENSOR_NOT_AVAILABLE"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_baro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SENSOR_NOT_AVAILABLE"
-            android:textSize="24sp" />
+            android:text="PRESSURE_SENSOR_NOT_AVAILABLE"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_accelero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SENSOR_NOT_AVAILABLE"
-            android:textSize="24sp" />
+            android:text="ACCELEROMETER_SENSOR_NOT_AVAILABLE"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_rotvec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SENSOR_NOT_AVAILABLE"
-            android:textSize="24sp" />
+            android:text="ROTATION_VECTOR_SENSOR_NOT_AVAILABLE"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_prox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SENSOR_NOT_AVAILABLE"
-            android:textSize="24sp" />
+            android:text="PROXIMITY_SENSOR_NOT_AVAILABLE"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_ambi_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SENSOR_NOT_AVAILABLE"
-            android:textSize="24sp" />
+            android:text="LIGHT_SENSOR_NOT_AVAILABLE"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

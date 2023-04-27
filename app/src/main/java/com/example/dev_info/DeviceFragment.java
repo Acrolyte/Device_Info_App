@@ -1,8 +1,10 @@
 package com.example.dev_info;
 
 import static android.content.Context.ACTIVITY_SERVICE;
+import static android.content.Context.BATTERY_SERVICE;
 
 import android.app.ActivityManager;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -17,13 +19,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class DeviceFragment extends Fragment {
+
+
+public class DeviceFragment extends Fragment  {
 
     public DeviceFragment() {
         // Required empty public constructor
     }
 
     TextView info;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +52,9 @@ public class DeviceFragment extends Fragment {
         StatFs statFs = new StatFs(Environment.getDataDirectory().getAbsolutePath());
         long totalDiskSpace = statFs.getBlockCountLong() * statFs.getBlockSizeLong() / (1024 * 1024);
 
+        BatteryManager bm = (BatteryManager) getContext().getSystemService(BATTERY_SERVICE);
+        int batLevel = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+
         info = (TextView) view.findViewById(R.id.tv_info_txt);
 
         String manf = Build.MANUFACTURER;
@@ -56,15 +64,20 @@ public class DeviceFragment extends Fragment {
         info.append("MODEL: " + model + "\n");
 
         String hardware = Build.HARDWARE;
-        info.append("HARDWARE: " + hardware + "\n");
+        info.append("HARDWARE: " + hardware + "\n\n");
 
         String version = Build.VERSION.RELEASE;
-        info.append("ANDROID VERSION: " + version + "\n");
+        info.append("ANDROID VERSION: " + version + "\n\n");
 
-        info.append("AVAILABLE RAM: "+availRam+ " MB\n");
-        info.append("TOTAL RAM: "+totalRam+" MB\n");
+        info.append("AVAILABLE RAM: " + availRam + " MB\n");
+        info.append("TOTAL RAM: " + totalRam + " MB\n\n");
 
-        info.append("TOTAL STORAGE SPACE: "+ totalDiskSpace + " MB\n");
+        info.append("TOTAL STORAGE SPACE: " + totalDiskSpace + " MB\n\n");
+
+
+        info.append("Battery: " + batLevel + "\n");
+
+
     }
 
 }

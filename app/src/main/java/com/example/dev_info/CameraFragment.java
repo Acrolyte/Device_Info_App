@@ -67,9 +67,9 @@ public class CameraFragment extends Fragment {
                         float aperture = characteristics.get(CameraCharacteristics.LENS_INFO_AVAILABLE_APERTURES)[0];
                         float megapixels = ((characteristics.get(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE).getWidth() *
                                 characteristics.get(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE).getHeight()));
-                        cameraInfoText.append("\n" + Arrays.toString(focalLengths));
-                        cameraInfoText.append("\n" + "Aperture-->" + "f" + aperture);
-                        cameraInfoText.append("\n" + "Megapixels-->" + megapixels);
+//                        cameraInfoText.append("\n" + Arrays.toString(focalLengths));
+                        cameraInfoText.append("\n" + "Aperture: " + "f/" + aperture);
+                        cameraInfoText.append("\n" + "Megapixels: " + megapixels);
 
                     } catch (CameraAccessException e) {
                         e.printStackTrace();
