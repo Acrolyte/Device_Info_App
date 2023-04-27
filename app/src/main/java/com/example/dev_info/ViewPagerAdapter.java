@@ -15,17 +15,21 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if(position == 0) return new DeviceFragment();
-        else return new SensorFragment();
+        else if (position == 1) {
+            return new CameraFragment();
+        } else return new SensorFragment();
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         if(position == 0) return "Device";
-        else return "Sensors";
+        else if (position == 1) {
+            return "Camera";
+        } else return "Sensors";
     }
 }
