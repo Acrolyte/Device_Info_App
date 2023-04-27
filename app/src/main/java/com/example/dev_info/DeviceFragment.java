@@ -34,5 +34,24 @@ public class DeviceFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Ram info
+        ActivityManager am = (ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        am.getMemoryInfo(memoryInfo);
+        long totalRam = memoryInfo.totalMem / (1024 * 1024);
+
+        info = (TextView) view.findViewById(R.id.tv_info_txt);
+
+        String manf = Build.MANUFACTURER;
+        info.append("MANUFACTURER: " + manf + "\n");
+
+        String model = Build.MODEL;
+        info.append("MODEL: " + model + "\n");
+
+        String hardware = Build.HARDWARE;
+        info.append("HARDWARE: " + hardware + "\n");
+
+        String version = Build.VERSION.RELEASE;
+        info.append("ANDROID VERSION: " + version + "\n");
     }
 }
