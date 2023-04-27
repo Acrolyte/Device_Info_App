@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
+import android.os.StatFs;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +40,12 @@ public class DeviceFragment extends Fragment {
         ActivityManager am = (ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE);
         ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
         am.getMemoryInfo(memoryInfo);
+        long availRam = memoryInfo.availMem / (1024 * 1024);
         long totalRam = memoryInfo.totalMem / (1024 * 1024);
+
+        //Storage info
+        StatFs statFs = new StatFs(Environment.getDataDirectory().getAbsolutePath());
+        long totalDiskSpace = statFs.getBlockCountLong() * statFs.getBlockSizeLong() / (1024 * 1024);
 
         info = (TextView) view.findViewById(R.id.tv_info_txt);
 
@@ -53,5 +60,11 @@ public class DeviceFragment extends Fragment {
 
         String version = Build.VERSION.RELEASE;
         info.append("ANDROID VERSION: " + version + "\n");
+
+        info.append("AVAILABLE RAM: "+availRam+ " MB\n");
+        info.append("TOTAL RAM: "+totalRam+" MB\n");
+
+        info.append("TOTAL STORAGE SPACE: "+ totalDiskSpace + " MB\n");
     }
+
 }

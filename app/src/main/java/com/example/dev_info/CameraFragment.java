@@ -49,11 +49,10 @@ public class CameraFragment extends Fragment {
             throw new RuntimeException(e);
         }
         if (cameraIds.length == 0) {
-            // No camera available
             return;
         }
 
-        String cameraId = cameraIds[0]; // Use first available camera
+        String cameraId = cameraIds[0];
         if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 121);
 
@@ -64,7 +63,6 @@ public class CameraFragment extends Fragment {
                 public void onOpened(CameraDevice camera) {
                     try {
                         CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
-                        // Get camera megapixels and aperture info
                         float[] focalLengths = characteristics.get(CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS);
                         float aperture = characteristics.get(CameraCharacteristics.LENS_INFO_AVAILABLE_APERTURES)[0];
                         float megapixels = ((characteristics.get(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE).getWidth() *
@@ -80,12 +78,10 @@ public class CameraFragment extends Fragment {
 
                 @Override
                 public void onDisconnected(CameraDevice camera) {
-                    // Camera device disconnected
                 }
 
                 @Override
                 public void onError(CameraDevice camera, int error) {
-                    // Error opening camera device
                 }
             }, null);
         } catch (CameraAccessException e) {
