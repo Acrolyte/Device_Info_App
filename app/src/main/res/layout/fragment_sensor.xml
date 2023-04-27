@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SensorFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_gps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR_NOT_AVAILABLE"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_gyro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR_NOT_AVAILABLE"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_baro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR_NOT_AVAILABLE"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_accelero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR_NOT_AVAILABLE"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_rotvec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR_NOT_AVAILABLE"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_prox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR_NOT_AVAILABLE"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_ambi_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SENSOR_NOT_AVAILABLE"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
