@@ -11,40 +11,39 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.dev_info.databinding.FragmentSensorBinding;
+
+import java.text.DecimalFormat;
+
 public class SensorFragment extends Fragment {
 
-    TextView gpstxt, gyrotxt, barotxt, accelerotxt, rotvectxt, proxtxt, ambitxt;
+    private FragmentSensorBinding binding;
+
     public SensorFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sensor, container, false);
+        binding = FragmentSensorBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        gpstxt = view.findViewById(R.id.tv_gps);
-        gyrotxt = view.findViewById(R.id.tv_gyro);
-        barotxt = view.findViewById(R.id.tv_baro);
-        accelerotxt = view.findViewById(R.id.tv_accelero);
-        rotvectxt = view.findViewById(R.id.tv_rotvec);
-        proxtxt = view.findViewById(R.id.tv_prox);
-        ambitxt = view.findViewById(R.id.tv_ambi_light);
+        DecimalFormat df = new DecimalFormat("#.000000");
 
         SensorManager sm = (SensorManager) getContext().getSystemService(SENSOR_SERVICE);
-
-        //GPS, Gyroscope, Baro, Accelero, Rotation Vector, Proximity, Ambient light
 
         Sensor gps = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         Sensor gyro = sm.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
@@ -55,90 +54,134 @@ public class SensorFragment extends Fragment {
         Sensor ambi = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
 
 
-        SensorEventListener gyroListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                gyrotxt.setText("Gyrometer = " + event.values[0]);
-            }
+        if (gyro != null) {
+            SensorEventListener gyroListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    binding.tvGyrotext.setText("Gyrometer");
+                    binding.tvGyroVal1.setText("X = " + df.format(event.values[0]));
+                    binding.tvGyroVal2.setText("Y = " + df.format(event.values[1]));
+                    binding.tvGyroVal3.setText("Z = " + df.format(event.values[2]));
+                }
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-            }
-        };
-        SensorEventListener baroListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                barotxt.setText("Barometer = " + event.values[0]);
-            }
+                }
+            };
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            sm.registerListener(gyroListener, gyro, SensorManager.SENSOR_DELAY_NORMAL);
+        } else binding.llGyro.setVisibility(View.GONE);
 
-            }
-        };
-        SensorEventListener acceleroListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                accelerotxt.setText("Accelerometer = " + event.values[0]);
-            }
+        if (gps != null) {
+            SensorEventListener gpsListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    binding.tvGpstext.setText("GPS");
+                    binding.tvGpsVal1.setText("X = " + df.format(event.values[0]));
+                    binding.tvGpsVal2.setText("Y = " + df.format(event.values[1]));
+                    binding.tvGpsVal3.setText("Z = " + df.format(event.values[2]));
+                }
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-            }
-        };
-        SensorEventListener rotvecListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                rotvectxt.setText("Rotation Vector = " + event.values[0]);
-            }
+                }
+            };
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            sm.registerListener(gpsListener, gps, SensorManager.SENSOR_DELAY_NORMAL);
+        } else binding.llGps.setVisibility(View.GONE);
 
-            }
-        };
-        SensorEventListener proxListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                proxtxt.setText("Proximity = " + event.values[0]);
-            }
+        if (baro!= null) {
+            SensorEventListener baroListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    binding.tvBarotxt.setText("Barometer");
+                    binding.tvBaroVal1.setText("X = " + df.format(event.values[0]));
+                }
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-            }
-        };
-        SensorEventListener ambiListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                ambitxt.setText("Ambient Light = " + event.values[0]);
-            }
+                }
+            };
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            sm.registerListener(baroListener, baro, SensorManager.SENSOR_DELAY_NORMAL);
+        } else binding.llBaro.setVisibility(View.GONE);
 
-            }
-        };
-        SensorEventListener gpsListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                gpstxt.setText("GPS = " + event.values[0]);
-            }
+        if (accel != null) {
+            SensorEventListener accelListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    binding.tvAcceltxt.setText("Accelerometer");
+                    binding.tvAccelVal1.setText("X = " + df.format(event.values[0]));
+                    binding.tvAccelVal2.setText("Y = " + df.format(event.values[1]));
+                    binding.tvAccelVal3.setText("Z = " + df.format(event.values[2]));
+                }
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-            }
-        };
+                }
+            };
 
-        sm.registerListener(gpsListener, gps, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener(gyroListener, gyro, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener(baroListener, baro, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener(acceleroListener, accel, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener(rotvecListener, rot_vec, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener(proxListener, prox, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener(ambiListener, ambi, SensorManager.SENSOR_DELAY_NORMAL);
+            sm.registerListener(accelListener, accel, SensorManager.SENSOR_DELAY_NORMAL);
+        } else binding.llAccel.setVisibility(View.GONE);
+
+
+        if (prox != null) {
+            SensorEventListener proxListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    binding.tvProx.setText("Proximity");
+                    binding.tvProxVal1.setText("X = " + df.format(event.values[0]));
+                }
+
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+                }
+            };
+
+            sm.registerListener(proxListener, prox, SensorManager.SENSOR_DELAY_NORMAL);
+        } else binding.llProx.setVisibility(View.GONE);
+
+        if (rot_vec != null) {
+            SensorEventListener rotvecListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    binding.tvRotVec.setText("Rotation Vector");
+                    binding.tvRotVecVal1.setText("X = " + df.format(event.values[0]));
+                    binding.tvRotVecVal2.setText("Y = " + df.format(event.values[1]));
+                    binding.tvRotVecVal3.setText("Z = " + df.format(event.values[2]));
+                }
+
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+                }
+            };
+
+            sm.registerListener(rotvecListener, rot_vec, SensorManager.SENSOR_DELAY_NORMAL);
+        } else binding.llRotVec.setVisibility(View.GONE);
+
+        if (ambi != null) {
+            SensorEventListener ambiListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    binding.tvLight.setText("Ambience Light");
+                    binding.tvLightVal1.setText("X = " + df.format(event.values[0]));
+                }
+
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+                }
+            };
+
+            sm.registerListener(ambiListener, ambi, SensorManager.SENSOR_DELAY_NORMAL);
+        } else binding.llLight.setVisibility(View.GONE);
+
+
     }
 }

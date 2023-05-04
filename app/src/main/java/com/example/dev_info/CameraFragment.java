@@ -40,6 +40,7 @@ public class CameraFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         cameraInfoText = (TextView) view.findViewById(R.id.tv_camera_info_txt);
+        cameraInfoText.setText("");
 
         CameraManager manager = (CameraManager) getContext().getSystemService(Context.CAMERA_SERVICE);
         String[] cameraIds = new String[0];
@@ -68,7 +69,7 @@ public class CameraFragment extends Fragment {
                         float megapixels = ((characteristics.get(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE).getWidth() *
                                 characteristics.get(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE).getHeight()));
 //                        cameraInfoText.append("\n" + Arrays.toString(focalLengths));
-                        cameraInfoText.append("\n" + "Aperture: " + "f/" + aperture);
+                        cameraInfoText.append("Aperture: " + "f/" + aperture);
                         cameraInfoText.append("\n" + "Megapixels: " + megapixels);
 
                     } catch (CameraAccessException e) {

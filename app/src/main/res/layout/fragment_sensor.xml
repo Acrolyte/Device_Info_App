@@ -1,72 +1,387 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SensorFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_gps"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MAGNETIC_FIELD_SENSOR_NOT_AVAILABLE"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_gyro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GYROSCOPE_SENSOR_NOT_AVAILABLE"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp">
 
-        <TextView
-            android:id="@+id/tv_baro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PRESSURE_SENSOR_NOT_AVAILABLE"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tv_accelero"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ACCELEROMETER_SENSOR_NOT_AVAILABLE"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tv_rotvec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ROTATION_VECTOR_SENSOR_NOT_AVAILABLE"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/tv_gpstext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MAGNETIC_FIELD SENSOR_NOT_AVAILABLE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/tv_prox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PROXIMITY_SENSOR_NOT_AVAILABLE"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+                    <LinearLayout
+                        android:id="@+id/ll_gps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:weightSum="3">
 
-        <TextView
-            android:id="@+id/tv_ambi_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LIGHT_SENSOR_NOT_AVAILABLE"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/tv_gps_val1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="First value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
 
-    </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_gps_val2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Second value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
 
-</FrameLayout>
+                        <TextView
+                            android:id="@+id/tv_gps_val3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Third value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_gyrotext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GYROSCOPE_SENSOR_NOT_AVAILABLE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_gyro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/tv_gyro_val1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="First value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_gyro_val2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Second value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_gyro_val3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Third value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_barotxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PRESSURE_SENSOR_NOT_AVAILABLE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_baro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/tv_baro_val1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="First value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_acceltxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ACCELEROMETER_SENSOR_NOT_AVAILABLE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_accel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/tv_accel_val1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="First value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_accel_val2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Second value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_accel_val3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Third value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_rot_vec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ROTATION_VECTOR_SENSOR_NOT_AVAILABLE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_rot_vec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/tv_rot_vec_val1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="First value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_rot_vec_val2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Second value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tv_rot_vec_val3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Third value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_prox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PROXIMITY_SENSOR_NOT_AVAILABLE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_prox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/tv_prox_val1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="First value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LIGHT_SENSOR_NOT_AVAILABLE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_light"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/tv_light_val1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="First value"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
